@@ -177,17 +177,23 @@ with col1:
     transaction_date = st.date_input("Transaction Date")
 
 with col2:
-    land_area = st.number_input(
-        "Land Area",
+    land_area_sqft = st.number_input(
+        "Land Area (sqft)",
         min_value=1.0,
-        value=150.0
+        value=1600.0
     )
 
-    main_floor_area = st.number_input(
-        "Main Floor Area",
+    main_floor_area_sqft = st.number_input(
+        "Main Floor Area (sqft)",
         min_value=1.0,
-        value=120.0
+        value=1200.0
     )
+
+    # Convert sqft to sqm for model input
+    SQFT_TO_SQM = 0.092903
+
+    land_area = land_area_sqft * SQFT_TO_SQM
+    main_floor_area = main_floor_area_sqft * SQFT_TO_SQM
 
     address = st.text_input(
         "Property Address",
@@ -319,7 +325,3 @@ if st.button("Predict House Price", type="primary"):
     )
 
     st.dataframe(count_df, use_container_width=True)
-
-    st.subheader("Model Input Used")
-
-    st.dataframe(input_df, use_container_width=True)
