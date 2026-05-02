@@ -5,6 +5,7 @@ import joblib
 
 from geopy.geocoders import Nominatim
 from sklearn.neighbors import BallTree
+from datetime import datetime
 
 # =========================
 # App Config
@@ -174,7 +175,6 @@ with col1:
         ["Freehold", "Leasehold"]
     )
 
-    transaction_date = st.date_input("Transaction Date")
 
 with col2:
     land_area_sqft = st.number_input(
@@ -226,6 +226,8 @@ if st.button("Predict House Price", type="primary"):
         "park",
         "station"
     ]
+
+    transaction_date = datetime.now()
 
     with st.spinner("Calculating nearby POI features..."):
 
