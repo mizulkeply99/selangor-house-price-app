@@ -14,7 +14,7 @@ st.set_page_config(
     layout="wide"
 )
 
-MODEL_PATH = "house_price_model_compressed.pkl"
+MODEL_PATH = "house_price_model_small.pkl"
 POI_PATH = "selangor_pois_clean.csv"
 EARTH_RADIUS_KM = 6371
 MODEL_ACCURACY = 92.25
