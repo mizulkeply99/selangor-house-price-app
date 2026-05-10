@@ -200,6 +200,15 @@ with col2:
         "Shah Alam, Selangor, Malaysia"
     )
 
+    current_year = datetime.now().year
+
+    transaction_year = st.number_input(
+        "Target Prediction Year",
+        min_value=1900,
+        value=current_year,
+        step=1
+    )
+
 # =========================
 # Prediction
 # =========================
@@ -227,7 +236,11 @@ if st.button("Predict House Price", type="primary"):
         "station"
     ]
 
-    transaction_date = datetime.now()
+    transaction_date = datetime(
+        int(transaction_year),
+        1,
+        1
+    )
 
     with st.spinner("Calculating nearby POI features..."):
 
